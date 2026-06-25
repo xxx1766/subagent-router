@@ -1,7 +1,7 @@
 {
   "name": "subagent-router",
   "version": "0.1.0",
-  "description": "A lightweight Codex skill that keeps the main session small by routing suitable work to subagents.",
+  "description": "A lightweight skill for Codex and Claude Code that keeps the main session small by routing suitable work to subagents.",
   "author": {
     "name": "Local developer"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Subagent Router",
     "shortDescription": "Route suitable work to subagents.",
-    "longDescription": "Subagent Router adds a concise workflow for deciding when to delegate search, implementation, testing, and review work to isolated subagents while keeping the main session focused on coordination and final decisions.",
+    "longDescription": "Subagent Router adds a concise workflow for deciding when to delegate search, implementation, testing, and review work to isolated subagents while keeping the main session focused on coordination and final decisions. It is usable from Codex and Claude Code.",
     "developerName": "Local developer",
     "category": "Coding",
     "capabilities": [

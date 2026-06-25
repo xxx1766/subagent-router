@@ -1,16 +1,17 @@
 # Subagent Router
 
-A lightweight Codex plugin that adds one skill: `subagent-router`.
+A lightweight Codex and Claude Code plugin that adds one skill:
+`subagent-router`.
 
-The skill helps Codex keep the main session small by routing suitable work to
-isolated subagents. It is meant for multi-file changes, broad code search,
-test triage, independent failures, review work, and `go on` style end-to-end
+The skill helps the controller session stay small by routing suitable work to
+isolated subagents. It is meant for multi-file changes, broad code search, test
+triage, independent failures, review work, and `go on` style end-to-end
 execution.
 
 ## What It Does
 
-`subagent-router` teaches Codex to check whether a task should be delegated
-before doing context-heavy work inline.
+`subagent-router` teaches the assistant to check whether a task should be
+delegated before doing context-heavy work inline.
 
 It favors:
 
@@ -23,7 +24,7 @@ It favors:
 It avoids delegation for single small edits, design questions that need user
 judgment, shared file scopes, secrets, and high-risk global configuration.
 
-## Install
+## Install In Codex
 
 Clone the plugin into the personal plugin location:
 
@@ -76,7 +77,7 @@ codex plugin add subagent-router@personal
 
 Start a new Codex session after installing so the skill list is refreshed.
 
-## Verify
+### Verify In Codex
 
 Check that the plugin is installed:
 
@@ -104,6 +105,36 @@ subagent-router:subagent-router
 
 If the plugin is installed but the skill is not visible, start a new Codex
 session. Skill lists are loaded at session start.
+
+## Install In Claude Code
+
+Validate the plugin:
+
+```bash
+claude plugin validate ~/plugins/subagent-router
+```
+
+Add a local checkout as a Claude Code marketplace:
+
+```bash
+claude plugin marketplace add ~/plugins/subagent-router
+```
+
+If the repository is accessible from the current environment, the GitHub URL
+also works:
+
+```bash
+claude plugin marketplace add https://github.com/xxx1766/subagent-router
+```
+
+Install the plugin:
+
+```bash
+claude plugin install subagent-router@subagent-router
+```
+
+Start a new Claude Code session after installing so the skill list is
+refreshed.
 
 ## Use
 
@@ -173,11 +204,12 @@ tasks. Small local edits or tiny repos will not show large context savings.
 ## Notes
 
 This plugin does not require Ruflo, MCP setup, or hook configuration. It is a
-skill-level routing rule for Codex's native subagent capability.
+skill-level routing rule for native subagent capability in Codex or Claude
+Code.
 
-It is most useful on Codex surfaces that expose subagent tools. If a surface
-does not expose subagents, the skill still works as a routing checklist, but it
-cannot create isolated worker sessions by itself.
+It is most useful on surfaces that expose subagent tools. If a surface does not
+expose subagents, the skill still works as a routing checklist, but it cannot
+create isolated worker sessions by itself.
 
 Hooks or MCP orchestration can be added later, but the first version stays
 small on purpose: it reminds the main session to delegate at the right time

@@ -1,0 +1,19 @@
+{
+  "name": "subagent-router",
+  "description": "Keep the main session small by routing suitable search, implementation, testing, and review work to isolated subagents.",
+  "version": "0.1.0",
+  "author": {
+    "name": "xxx1766",
+    "email": "xuqingru19@mails.ucas.ac.cn"
+  },
+  "homepage": "https://github.com/xxx1766/subagent-router",
+  "repository": "https://github.com/xxx1766/subagent-router",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "subagents",
+    "delegation",
+    "context-management",
+    "workflow"
+  ]
+}

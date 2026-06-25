@@ -1,6 +1,6 @@
 ---
 name: subagent-router
-description: Use when a task may benefit from Codex subagents, isolated context, delegation, parallel search, worker agents, explorer agents, test agents, review agents, multi-file changes, unrelated failures, or when the user says go on and expects end-to-end execution.
+description: Use when a task may benefit from subagents, isolated context, delegation, parallel search, worker agents, explorer agents, test agents, review agents, multi-file changes, unrelated failures, or when the user says go on and expects end-to-end execution.
 ---
 
 # Subagent Router
@@ -40,7 +40,7 @@ Every subagent prompt must include:
 - Constraints: do not revert unrelated changes; work with concurrent edits; avoid global config unless assigned.
 - Return shape: conclusion, changed paths, tests/commands run, failures, and risks.
 
-For coding work, tell workers to edit directly in their forked workspace and list changed paths in the final answer.
+For coding work, tell workers to edit directly in their assigned workspace/session and list changed paths in the final answer.
 
 ## Main Session Behavior
 

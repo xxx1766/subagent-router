@@ -1,0 +1,21 @@
+{
+  "name": "subagent-router",
+  "description": "Personal marketplace for the Subagent Router Claude Code plugin.",
+  "owner": {
+    "name": "xxx1766",
+    "email": "xuqingru19@mails.ucas.ac.cn"
+  },
+  "plugins": [
+    {
+      "name": "subagent-router",
+      "description": "Keep the main session small by routing suitable search, implementation, testing, and review work to isolated subagents.",
+      "author": {
+        "name": "xxx1766",
+        "email": "xuqingru19@mails.ucas.ac.cn"
+      },
+      "category": "development",
+      "source": ".",
+      "homepage": "https://github.com/xxx1766/subagent-router"
+    }
+  ]
+}
