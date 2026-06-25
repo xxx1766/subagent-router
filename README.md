@@ -26,24 +26,11 @@ reduces main-session context, not necessarily total token usage. The guidance
 search run started from a broader 154-file / 130.7k-word corpus; the table uses
 the relevant document set as the comparison base.
 
-### Before And After
+### Timeline Comparison
 
-```mermaid
-flowchart LR
-    subgraph before["Before: serial inline work"]
-        b0["Main session"] --> b1["Search and read large sources"]
-        b1 --> b2["Implement, test, and review inline"]
-        b2 --> b3["Process logs fill the same context"]
-    end
-
-    subgraph after["After: subagent-router"]
-        a0["Main session"] --> a1{"Context-heavy slice?"}
-        a1 -- yes --> a2["Explorer or worker subagent"]
-        a2 --> a3["Return conclusions, changed paths, verification, risks"]
-        a3 --> a4["Main session keeps decision-grade context"]
-        a1 -- no --> a4
-    end
-```
+<p align="center">
+  <img src="assets/timeline-comparison.svg" alt="Timeline comparison showing that before Subagent Router the main session accumulates all work inline, while after Subagent Router the main session keeps only brief, routing, final synthesis, verification, and risks." width="100%">
+</p>
 
 ### Data View
 
