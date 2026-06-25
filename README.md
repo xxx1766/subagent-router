@@ -8,6 +8,53 @@ isolated subagents. It is meant for multi-file changes, broad code search, test
 triage, independent failures, review work, and `go on` style end-to-end
 execution.
 
+## Effect At A Glance
+
+Local smoke tests showed the strongest benefit on large research, code-search,
+and test-triage tasks. The measurements below estimate how much source material
+stayed out of the controller session after work was routed through a subagent.
+They are rough measurements, not a formal benchmark.
+
+| Flow | Delegated material | Main-session return | Reduction |
+| --- | ---: | ---: | ---: |
+| AI infra paper | 25-page paper; about 16.7k words | Under 900 words | 94%-96% |
+| Guidance search | 13 relevant docs; about 19.5k words | Under 700 words | About 96% |
+| Plugin self-review | 4 files; about 1.1k words | Under 600 words | At least about 45% |
+
+Small local edits or tiny repos will not show large context savings. The plugin
+reduces main-session context, not necessarily total token usage. The guidance
+search run started from a broader 154-file / 130.7k-word corpus; the table uses
+the relevant document set as the comparison base.
+
+### Before And After
+
+```mermaid
+flowchart LR
+    subgraph before["Before: serial inline work"]
+        b0["Main session"] --> b1["Search and read large sources"]
+        b1 --> b2["Implement, test, and review inline"]
+        b2 --> b3["Process logs fill the same context"]
+    end
+
+    subgraph after["After: subagent-router"]
+        a0["Main session"] --> a1{"Context-heavy slice?"}
+        a1 -- yes --> a2["Explorer or worker subagent"]
+        a2 --> a3["Return conclusions, changed paths, verification, risks"]
+        a3 --> a4["Main session keeps decision-grade context"]
+        a1 -- no --> a4
+    end
+```
+
+### Data View
+
+```mermaid
+xychart-beta
+    title "Main-session context reduction"
+    x-axis ["AI infra paper", "Guidance search", "Self-review"]
+    y-axis "Reduction (%)" 0 --> 100
+    bar [95, 96, 45]
+```
+
 ## What It Does
 
 `subagent-router` teaches the assistant to check whether a task should be
@@ -207,22 +254,6 @@ process.
 | Design question needing user judgment | Keep inline and ask/answer in main session |
 | Secrets, global config, MCP/harness settings | Keep inline unless explicitly authorized |
 | Two agents would edit the same files | Do not parallelize that slice |
-
-## Effectiveness Smoke Tests
-
-These are rough measurements from local smoke tests, not a formal benchmark.
-The goal was to estimate how much source material stayed out of the controller
-session when routed through a subagent. Token counts are approximate; the
-important number is the order of magnitude.
-
-| Flow | Source material delegated | Returned to main session | Main-session context reduction |
-| --- | ---: | ---: | ---: |
-| Recent AI infra survey paper | 25-page arXiv paper, about 16.7k words / 22k-29k tokens | Under 900 words | About 94%-96% |
-| Broad subagent-guidance search | 13 relevant docs, about 19.5k words; broader corpus was 154 files / 130.7k words | Under 700 words | About 96% against relevant docs |
-| Plugin self-review | 4 plugin files, 221 lines / 1.1k words | Under 600 words | Modest; useful mainly as independent review |
-
-The pattern is strongest for large research, code-search, and test-triage
-tasks. Small local edits or tiny repos will not show large context savings.
 
 ## Notes
 
