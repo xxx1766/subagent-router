@@ -1,6 +1,6 @@
 ---
 name: subagent-router
-description: Use when a task may benefit from subagents, isolated context, delegation, parallel search, worker agents, explorer agents, test agents, review agents, multi-file changes, unrelated failures, or when the user says go on and expects end-to-end execution.
+description: Before any non-trivial task, consider whether subagents can keep the main session small. Use when context-heavy search, multi-file changes, test triage, review, independent failures, parallel work, or go on style execution may benefit from delegation to explorer or worker subagents.
 ---
 
 # Subagent Router

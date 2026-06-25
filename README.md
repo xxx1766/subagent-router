@@ -138,9 +138,32 @@ refreshed.
 
 ## Use
 
-The skill can trigger implicitly when a task mentions subagents, delegation,
-parallel search, multi-file changes, unrelated failures, tests, reviews, or
-`go on`.
+The skill metadata is intentionally written as the always-on short rule:
+
+```text
+Before any non-trivial task, consider whether subagents can keep the main
+session small.
+```
+
+That metadata is present in the skill list at session start. The full
+`SKILL.md` body is loaded only when the rule triggers.
+
+For more reliable behavior across projects, add this short rule to your
+persistent instructions file. Use `AGENTS.md` for Codex and `CLAUDE.md` or
+`.claude/rules/subagent-router.md` for Claude Code:
+
+```md
+Before any non-trivial task, consider whether the installed `subagent-router`
+skill should handle context-heavy work through subagents.
+
+Use it for broad search, multi-file changes, test triage, review work,
+independent failure investigation, and `go on` style end-to-end execution. Keep
+single small edits and design questions inline.
+```
+
+The skill can also trigger implicitly when a task mentions subagents,
+delegation, parallel search, multi-file changes, unrelated failures, tests,
+reviews, or `go on`.
 
 You can also invoke it explicitly:
 
