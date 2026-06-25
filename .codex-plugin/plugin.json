@@ -1,0 +1,25 @@
+{
+  "name": "subagent-router",
+  "version": "0.1.0",
+  "description": "A lightweight Codex skill that keeps the main session small by routing suitable work to subagents.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Subagent Router",
+    "shortDescription": "Route suitable work to subagents.",
+    "longDescription": "Subagent Router adds a concise workflow for deciding when to delegate search, implementation, testing, and review work to isolated subagents while keeping the main session focused on coordination and final decisions.",
+    "developerName": "Local developer",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Subagent Router while working on this task.",
+      "Use Subagent Router and keep the main session concise."
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Subagent Router"
+  short_description: "Route suitable work to subagents."
+  default_prompt: "Use $subagent-router to keep the main session concise while delegating suitable work."
+
+policy:
+  allow_implicit_invocation: true
